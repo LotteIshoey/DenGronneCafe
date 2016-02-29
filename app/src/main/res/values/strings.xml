@@ -1,0 +1,11 @@
+<resources>
+    <string name="app_name">The Green Cafe</string>
+
+    <string name="start_text1">The</string>
+    <string name="start_text2">Green</string>
+    <string name="start_text3">Cafe</string>
+
+    <string name="dinner_name">Dagens ret</string>
+
+    <string name="start_box1">Online bestilling</string>
+</resources>
