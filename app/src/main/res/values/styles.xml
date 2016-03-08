@@ -8,4 +8,26 @@
         <item name="colorAccent">@color/colorAccent</item>
     </style>
 
+    <style name="Startbutton">
+    <item name="android:layout_width">80dp</item>
+    <item name="android:layout_height">50dp</item>
+    <item name="android:background">#7969d95f</item>
+        <item name="android:textSize">20sp</item>
+        <item name="android:textAllCaps">false</item>
+    </style>
+
+
+    <style name="textHeadline">
+        <item name="android:layout_width">wrap_content</item>
+        <item name="android:layout_height">wrap_content</item>
+        <item name="android:textSize">50sp</item>
+        <item name="android:textAllCaps">true</item>
+        <item name="android:textStyle">bold</item>
+        <item name="android:textColor">#463434</item>
+        <item name="android:layout_gravity">center_horizontal</item>
+        <item name="android:padding">30dp</item>
+
+    </style>
+
+
 </resources>
