@@ -17,7 +17,8 @@
         </activity>
         <activity android:name=".About" />
         <activity android:name=".Menu" />
-        <activity android:name=".Kontakt"></activity>
+        <activity android:name=".Kontakt" />
+        <activity android:name=".ProfileMember"></activity>
     </application>
 
 </manifest>
