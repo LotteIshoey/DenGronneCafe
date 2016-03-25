@@ -5,6 +5,7 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ArrayAdapter;
+import android.widget.ImageView;
 import android.widget.TextView;
 
 import java.util.ArrayList;
@@ -26,11 +27,13 @@ public class MenuAdapter extends ArrayAdapter<Menulist> {
             TextView salatName = (TextView) convertView.findViewById(R.id.salatName);
             TextView salatPrice = (TextView) convertView.findViewById(R.id.salatPrice);
             TextView undername = (TextView) convertView.findViewById(R.id.undername);
+            ImageView menuPic = (ImageView) convertView.findViewById(R.id.menuPic);
             //Populate the data into the template view using the data object
             salatName.setText(menulist.name);
             salatPrice.setText(menulist.price);
             salatPrice.setText(menulist.price);
             undername.setText(menulist.undertitle);
+            menuPic.setImageResource(menulist.image);
             //Return the completed view render on screen
             return convertView;
 

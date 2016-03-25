@@ -8,7 +8,8 @@
     android:paddingRight="@dimen/activity_horizontal_margin"
     android:paddingTop="@dimen/activity_vertical_margin"
     tools:context="com.example.lotte.dengronnecafe.ProfileMember"
-    android:orientation="vertical">
+    android:orientation="vertical"
+    android:background="@drawable/backgroundcafe">
 
 
         <LinearLayout
@@ -20,13 +21,15 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:text="Fornavn:"
-                android:textSize="20sp" />
+                android:textSize="20sp"
+                android:layout_marginRight="25dp" />
             <EditText
                 android:id="@+id/edit_firstname"
-                android:layout_width="150dp"
+                android:layout_width="200dp"
                 android:layout_height="wrap_content"
                 android:inputType="textPersonName" />
         </LinearLayout>
+
         <LinearLayout
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
@@ -36,13 +39,13 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:text="Efternavn:"
-                android:textSize="20sp"/>
+                android:textSize="20sp"
+                android:layout_marginRight="11dp"/>
             <EditText
                 android:id="@+id/edit_lastname"
-                android:layout_width="150dp"
+                android:layout_width="200dp"
                 android:layout_height="wrap_content"
                 android:inputType="textPersonName"/>
-
         </LinearLayout>
 
         <LinearLayout
@@ -54,49 +57,45 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:text="E-mail:"
-                android:textSize="20sp"/>
+                android:textSize="20sp"
+                android:layout_marginRight="40dp"/>
             <EditText
                 android:id="@+id/edit_mail"
-                android:layout_width="150dp"
+                android:layout_width="200dp"
                 android:layout_height="wrap_content"
-                android:inputType="textEmailAddress"/>
-
+                android:inputType="textEmailAddress" />
         </LinearLayout>
 
         <Button
-            android:layout_width="170dp"
-            android:layout_height="wrap_content"
+            style="@style/buttonStartBig"
             android:layout_marginTop="20dp"
-            android:text="Tag billede"
             android:layout_marginBottom="20dp"
-            android:onClick="click_takephoto"
-            android:background="#7969d95f"/>
+            android:text="@string/member_takepicture"
+            android:onClick="click_takephoto"/>
 
         <ImageView
-            android:layout_width="150dp"
-            android:layout_height="150dp"
+            android:layout_width="210dp"
+            android:layout_height="210dp"
             android:id="@+id/MyFace"
-            />
+            android:layout_gravity="center"/>
 
         <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:orientation="horizontal">
+            android:orientation="horizontal"
+            android:layout_marginTop="10dp">
 
             <Button
-                android:layout_width="170dp"
-                android:layout_height="wrap_content"
-                android:text="Gem profil"
-                android:onClick="click_saveprofile"
-                android:background="#7969d95f"/>
+                style="@style/buttonStartBig"
+                android:layout_marginRight="40dp"
+                android:text="@string/member_save"
+                android:onClick="click_saveprofile"/>
 
             <Button
-                android:layout_width="170dp"
-                android:layout_height="wrap_content"
-                android:text="Annuller"
-                android:onClick="click_cancelprofile"
-                android:background="#7969d95f"/>
-
+                android:id="@+id/deleteprofile"
+                style="@style/buttonStartBig"
+                android:text="@string/member_delete"
+                android:onClick="delete_profile" />
         </LinearLayout>
     </LinearLayout>
 

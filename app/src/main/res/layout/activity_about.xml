@@ -17,6 +17,7 @@
 
         <TextView
             android:id="@+id/headline_about"
+            android:textAllCaps="true"
             style="@style/textHeadline"
             android:text="@string/headline_about"
             android:textColor="#463434" />
@@ -26,6 +27,7 @@
             android:layout_width="match_parent"
             android:layout_height="match_parent"
             android:text="@string/fill_about"
+            android:textSize="17sp"
             android:textColor="#463434" />
 
 

@@ -7,6 +7,31 @@
     android:paddingLeft="@dimen/activity_horizontal_margin"
     android:paddingRight="@dimen/activity_horizontal_margin"
     android:paddingTop="@dimen/activity_vertical_margin"
-    tools:context="com.example.lotte.dengronnecafe.Kontakt">
+    tools:context="com.example.lotte.dengronnecafe.Kontakt"
+    android:background="@drawable/backgroundcafe">
 
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:orientation="vertical">
+
+        <TextView
+            android:id="@+id/headline_about"
+            android:textAllCaps="true"
+            style="@style/textHeadline"
+            android:text="@string/headline_contact"
+            android:textSize="45sp"/>
+
+        <TextView
+            style="@style/simpletext"
+            android:text="@string/address_contact"/>
+
+        <TextView
+            style="@style/simpletext"
+            android:text="@string/phone_contact"/>
+
+        <TextView
+            style="@style/simpletext"
+            android:text="@string/mail_contact" />
+    </LinearLayout>
 </RelativeLayout>

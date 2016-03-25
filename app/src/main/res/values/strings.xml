@@ -12,6 +12,16 @@
     <string name="start_menu">Menu</string>
     <string name="start_profile">Medlemskab</string>
     <string name="headline_about">Om Os</string>
-    <string name="fill_about">Denne cafe er økologisk og bruger lokale varer fra nordjylland.</string>
+    <string name="fill_about">Den grønne cafe sælger kun økolgiske varer og fokuserer på at give nordjyderne lokale råvarer. Dette øger kvaliteten af vores sortiment. Du kan nyde din frokost i cafeen eller tage det med hjem. I hverdagene har du også mulighed for at nyde maden til aften. Vi håber du få en fantastisk oplevelse i vores cafe. </string>
     <string name="start_box1">Online bestilling</string>
+    <string name="headline_contact">Kontakt os</string>
+    <string name="address_contact">Teglværksgade 1, 9000 Aalborg</string>
+    <string name="mail_contact">E-mail: greencafe@cafe.com</string>
+    <string name="phone_contact">Tlf.nr. 26 00 26 00</string>
+    <string name="member_save">Gem Profil</string>
+    <string name="member_delete">Slet Profil</string>
+    <string name="member_takepicture">Tag Billede</string>
+
+
+
 </resources>
