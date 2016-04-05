@@ -66,12 +66,26 @@
                 android:inputType="textEmailAddress" />
         </LinearLayout>
 
+    <LinearLayout
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal">
+
         <Button
             style="@style/buttonStartBig"
             android:layout_marginTop="20dp"
             android:layout_marginBottom="20dp"
             android:text="@string/member_takepicture"
             android:onClick="click_takephoto"/>
+
+        <Button
+            style="@style/buttonStartBig"
+            android:layout_marginTop="20dp"
+            android:layout_marginBottom="20dp"
+            android:text="Make An Event"
+            android:onClick="open_event"/>
+
+    </LinearLayout>
 
         <ImageView
             android:layout_width="210dp"

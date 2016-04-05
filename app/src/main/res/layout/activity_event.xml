@@ -60,6 +60,24 @@
             android:layout_width="170dp"
             android:layout_height="wrap_content"
             android:layout_marginTop="20dp"
+            android:text="Invite a friend"
+            android:layout_marginBottom="20dp"
+            android:onClick="invite_friend"
+            android:background="#7969d95f"/>
+
+        <TextView
+            android:id="@+id/findcontact_view"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="(Friend name)"
+            android:textSize="20sp"/>
+
+
+
+        <Button
+            android:layout_width="170dp"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="20dp"
             android:text="Save"
             android:layout_marginBottom="20dp"
             android:onClick="save_event"

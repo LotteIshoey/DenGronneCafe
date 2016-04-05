@@ -47,6 +47,13 @@ public class ProfileMember extends AppCompatActivity {
 
     }
 
+
+    public void open_event (View v)
+    {
+        Intent event_start = new Intent(getApplicationContext(),Event.class);
+        startActivity(event_start);
+    }
+
     public void click_takephoto (View v)
     {
         // opens camera when clicking on take_photo

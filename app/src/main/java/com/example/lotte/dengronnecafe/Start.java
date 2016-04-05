@@ -28,6 +28,16 @@ public class Start extends AppCompatActivity {
         startActivity(contact_start);
     }
 
+    public void click_dessert (View v){
+        Intent contact_dessert = new Intent(getApplicationContext(),Desserts.class);
+        startActivity(contact_dessert);
+    }
+
+    public void click_find (View v){
+        Intent contact_find = new Intent(getApplicationContext(),Map.class);
+        startActivity(contact_find);
+    }
+
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
