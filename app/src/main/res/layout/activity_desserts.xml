@@ -7,22 +7,25 @@
     android:paddingLeft="@dimen/activity_horizontal_margin"
     android:paddingRight="@dimen/activity_horizontal_margin"
     android:paddingTop="@dimen/activity_vertical_margin"
-    tools:context="com.example.lotte.dengronnecafe.Desserts">
+    tools:context="com.example.lotte.dengronnecafe.Desserts"
+    android:id="@+id/activityDessertLayout">
 
     <fragment
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:name="com.example.lotte.dengronnecafe.fragment1"
-        android:id="@+id/fragment"
+        android:id="@+id/fragment1"
         android:layout_alignParentTop="true"
         android:layout_centerHorizontal="true"
-        android:layout_marginTop="51dp" />
+        tools:layout="@layout/fragment1_layout" />
 
     <fragment
-        android:layout_width="wrap_content"
+        android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:name="com.example.lotte.dengronnecafe.Fragment2"
         android:id="@+id/fragment2"
-        android:layout_centerVertical="true"
-        android:layout_centerHorizontal="true" />
+        android:layout_alignParentBottom="true"
+        android:layout_alignLeft="@+id/fragment1"
+        android:layout_alignStart="@+id/fragment1"
+        tools:layout="@layout/fragment2_layout" />
 </RelativeLayout>

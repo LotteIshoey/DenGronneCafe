@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:orientation="horizontal" android:layout_width="match_parent"
+    android:layout_height="match_parent">
+
+    <fragment
+        android:layout_width="250dp"
+        android:layout_height="match_parent"
+        android:name="com.example.lotte.dengronnecafe.fragment1"
+        android:id="@+id/fragment1"
+        tools:layout="@layout/fragment1_layout" />
+    <fragment
+        android:layout_width="350dp"
+        android:layout_height="match_parent"
+        android:name="com.example.lotte.dengronnecafe.Fragment2"
+        android:id="@+id/fragment2"
+        tools:layout="@layout/fragment2_layout" />
+</LinearLayout>

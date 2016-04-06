@@ -5,6 +5,7 @@ package com.example.lotte.dengronnecafe;
  */
 public interface Interface {
 
+
     public void getPosition(int p);
 
 

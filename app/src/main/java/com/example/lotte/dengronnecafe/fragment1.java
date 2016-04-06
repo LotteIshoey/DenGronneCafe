@@ -9,9 +9,6 @@ import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
 import android.widget.ListView;
 
-/**
- * Created by Lotte on 04-04-2016.
- */
 public class fragment1 extends Fragment implements AdapterView.OnItemClickListener{
 
     ListView list;
@@ -29,8 +26,7 @@ public class fragment1 extends Fragment implements AdapterView.OnItemClickListen
 
         super.onActivityCreated(savedInstanceState);
         list = (ListView) getActivity().findViewById(R.id.dessert_list);
-        ArrayAdapter<String> adapter = new
-                ArrayAdapter<String>(getActivity(),android.R.layout.simple_list_item_1,desserts);
+        ArrayAdapter<String> adapter = new ArrayAdapter<String>(getActivity(),android.R.layout.simple_list_item_1,desserts);
         list.setAdapter(adapter);
         list.setOnItemClickListener(this);
     }
@@ -40,7 +36,7 @@ public class fragment1 extends Fragment implements AdapterView.OnItemClickListen
     public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
 
         Interface listener = (Interface) getActivity();
-        listener.getPosition(position);
+         listener.getPosition(position);
 
     }
 }

@@ -5,10 +5,28 @@
     android:layout_height="match_parent"
     tools:context="com.example.lotte.dengronnecafe.Map">
 
-    <fragment
+
+
+    <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:name="com.google.android.gms.maps.MapFragment"
-        android:id="@+id/map"
-        />
+        android:orientation="vertical">
+
+        <fragment
+            android:layout_width="match_parent"
+            android:layout_height="400dp"
+            android:name="com.google.android.gms.maps.MapFragment"
+            android:id="@+id/map"
+            />
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="100dp"
+            android:id="@+id/locationtext"
+
+            />
+
+    </LinearLayout>
+
+
+
 </RelativeLayout>
