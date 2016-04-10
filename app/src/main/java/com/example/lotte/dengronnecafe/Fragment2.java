@@ -10,48 +10,40 @@ import android.widget.TextView;
 public class Fragment2 extends Fragment {
     TextView description;
     String activeDescription;
-
     String[] array_description = {"With sugar, sirup, or jelly", "With strawberry, vanilla, or chocolate","Differs", "With Banana, chocolate icecream, vanilla icecream and weapcream"};
 
-    public void onActivityCreated(Bundle savedInstanceState) {
-        super.onActivityCreated(savedInstanceState);
-        description = (TextView) getActivity().findViewById(R.id.fragment_text);
 
-
-
-    }
 
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
         // Inflate the layout for this fragment
         View view = inflater.inflate(R.layout.fragment2_layout, container, false);
 
-/*        if(savedInstanceState != null){
+        if(savedInstanceState != null){
             activeDescription = savedInstanceState.getString("text");
             description = (TextView) view.findViewById(R.id.fragment_text);
             description.setText(activeDescription);
-        }*/
-
-
+        }
         return view;
     }
 
-/*    @Override
-    public void newText (String newString) {
-        this.activeDescription = newString;
-        activeDescription.setText(newString);
-    }*/
+
+    public void onActivityCreated(Bundle savedInstanceState) {
+        super.onActivityCreated(savedInstanceState);
+        description = (TextView) getActivity().findViewById(R.id.fragment_text);
+    }
 
     //save the fragment state
-/*    @Override
-    public void onSaveInstanceState(Bundle outState){
+    @Override
+    public void onSaveInstanceState(Bundle outState) {
         super.onSaveInstanceState(outState);
         outState.putString("text", activeDescription);
-    }*/
+    }
+
 
     public void setDescription (int p){
-        description.setText(array_description[p]);
-
+        this.activeDescription = array_description[p];
+        description.setText(activeDescription);
     }
 
     }
