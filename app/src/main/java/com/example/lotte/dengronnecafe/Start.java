@@ -38,6 +38,11 @@ public class Start extends AppCompatActivity {
         startActivity(contact_find);
     }
 
+    public void click_music (View v){
+        Intent music_activity = new Intent(getApplicationContext(),Topsongs.class);
+        startActivity(music_activity);
+    }
+
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {

@@ -40,7 +40,8 @@
             android:name="com.google.android.maps.v2.API_KEY"
             android:value="AIzaSyAcH6sDt6f5wk32d9TYgeqLOOv0f88b2Cc" />
 
-        <activity android:name=".Map"></activity>
+        <activity android:name=".Map" />
+        <activity android:name=".Topsongs"></activity>
     </application>
 
 </manifest>
