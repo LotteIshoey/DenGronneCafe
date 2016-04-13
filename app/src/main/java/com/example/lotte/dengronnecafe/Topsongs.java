@@ -10,13 +10,11 @@ import android.support.v7.app.AppCompatActivity;
 import android.util.Log;
 import android.view.OrientationEventListener;
 import android.view.View;
+import android.widget.TextView;
 import android.widget.Toast;
 
 public class Topsongs extends AppCompatActivity  implements SensorEventListener {
 
-    MediaPlayer mp1;
-    MediaPlayer mp2;
-    MediaPlayer mp3;
     MediaPlayer mp;
 
     //variables for orientation sensor
@@ -32,6 +30,7 @@ public class Topsongs extends AppCompatActivity  implements SensorEventListener 
     float mLastZ;
     int songnumber = 0;
     int song_array[];
+    String song_names[] = {"Song 1", "Song 2", "Song 3"};
 
     int SHAKE_THRESHOLD = 2000;
 
@@ -44,9 +43,6 @@ public class Topsongs extends AppCompatActivity  implements SensorEventListener 
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_topsongs);
-        mp1 = MediaPlayer.create(this, R.raw.song1);
-        mp2 = MediaPlayer.create(this, R.raw.song2);
-        mp3 = MediaPlayer.create(this, R.raw.song3);
         song_array = new int[] {R.raw.song1, R.raw.song2, R.raw.song3};
         mp = MediaPlayer.create(this, song_array[songnumber]);
 
@@ -100,11 +96,9 @@ public class Topsongs extends AppCompatActivity  implements SensorEventListener 
 
     @Override
     public void onSensorChanged(SensorEvent event) {
-        float NOISE = (float) 2.0;
         xAxis = event.values[0];
         yAxis = event.values[1];
         zAxis = event.values[2];
-        long actualTime = System.currentTimeMillis();
 
         Log.d("xAxis", String.valueOf(event.values[0]));
         Log.d("yAxis", String.valueOf(event.values[1]));
@@ -141,12 +135,7 @@ public class Topsongs extends AppCompatActivity  implements SensorEventListener 
 
     }
 
-    public void start_song (View v){
-        play_song(songnumber);
-
-    }
-
-    public void stop_music (){
+    public void stop_music(){
         if (mp != null){
             mp.stop();
             mp.release();
@@ -167,10 +156,68 @@ public class Topsongs extends AppCompatActivity  implements SensorEventListener 
         }
     }
 
+    public void previous_song(){
+        songnumber--;
+        if (songnumber < 0) {
+            songnumber = 2;
+            play_song(songnumber);
+        }
+        else
+        {
+            play_song(songnumber);
+        }
+    }
+
     public void play_song(int index){
         stop_music();
         mp = MediaPlayer.create(this,song_array[index]);
         mp.start();
+        show_song(index);
     }
 
+    public void start_song (View v){
+        if(mp.isPlaying())
+        {
+            mp.pause();
+        }
+        else
+        {
+            play_song(songnumber);
+        }
+        //TODO: if the music is pausen and then pressed again, it continues.
+        // TODO: if the music is stopped, it can start again when pressing start
+
+    }
+
+    public void next_song (View v){
+        if(mp.isPlaying()) {
+            mp.stop();
+            next_song();
+        }
+    }
+
+    public void prev_song (View v){
+        if(mp.isPlaying()) {
+            mp.stop();
+            previous_song();
+        }
+
+    }
+
+    public void stop_song (View v){
+        if(mp.isPlaying()) {
+            stop_music();
+        }
+    }
+
+    public void show_song(int number){
+        if(mp.isPlaying()) {
+
+            String namesong = song_names[number];
+
+            TextView song = (TextView) findViewById(R.id.now_playing);
+            song.setText(namesong);
+
+        }
+    }
 }
