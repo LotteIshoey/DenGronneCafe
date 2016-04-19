@@ -41,7 +41,8 @@
             android:value="AIzaSyAcH6sDt6f5wk32d9TYgeqLOOv0f88b2Cc" />
 
         <activity android:name=".Map" />
-        <activity android:name=".Topsongs"></activity>
+        <activity android:name=".Topsongs" />
+        <activity android:name=".GeocodeLocation"></activity>
     </application>
 
 </manifest>

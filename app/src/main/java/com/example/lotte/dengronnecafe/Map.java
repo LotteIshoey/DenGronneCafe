@@ -43,6 +43,7 @@ public class Map extends AppCompatActivity implements
     LocationRequest mLocationRequest;
 
 
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -59,6 +60,7 @@ public class Map extends AppCompatActivity implements
                 .addConnectionCallbacks(this)
                 .addOnConnectionFailedListener(this)
                 .build();
+
     }
 
 
@@ -93,8 +95,8 @@ public class Map extends AppCompatActivity implements
         LocationServices.FusedLocationApi.requestLocationUpdates(mGoogleApiClient, mLocationRequest, this);
 
 
-        Location location = LocationServices.FusedLocationApi.getLastLocation(mGoogleApiClient);
-        reverseGeocode(location);
+       Location location = LocationServices.FusedLocationApi.getLastLocation(mGoogleApiClient);
+       reverseGeocode(location);
         addMarker(currentLatitude, currentLongitude, "Your position");
 
         locationTxt.setText("You are here: " + currentStreet + ", " + currentPost);
@@ -106,10 +108,11 @@ public class Map extends AppCompatActivity implements
         mGoogleApiClient.connect();
 
     }
+
     @Override
     protected void onStop() {
         super.onStop();
-        if (mGoogleApiClient.isConnected()){
+        if (mGoogleApiClient.isConnected()) {
             mGoogleApiClient.disconnect();
         }
     }
@@ -130,25 +133,11 @@ public class Map extends AppCompatActivity implements
 
     }
 
-    private void forwardGeocode() {
-        Geocoder fwdGeocoder = new Geocoder(this, Locale.getDefault());
-        String streetAddress = "Teglgårds Pl. 1, 9000 Aalborg";
-        List<Address> locations = null;
-        try {
-            locations = fwdGeocoder.getFromLocationName(streetAddress, 1);
-             cafeLongitude = locations.get(0).getLongitude();
-            cafeLatitude = locations.get(0).getLatitude();
-        } catch (IOException e1) {
-        // TODO Auto-generated catch block
-            e1.printStackTrace();
-        }
-    }
-
     private void reverseGeocode(Location location) {
         currentLatitude = location.getLatitude();
         currentLongitude = location.getLongitude();
         List<Address> addresses = null;
-        Geocoder gc = new Geocoder(this, Locale.getDefault());
+        Geocoder gc = new Geocoder(Map.this, Locale.getDefault());
         try {
             addresses = gc.getFromLocation(currentLatitude, currentLongitude, 1);
             currentStreet = addresses.get(0).getAddressLine(0);
@@ -157,19 +146,33 @@ public class Map extends AppCompatActivity implements
             // TODO Auto-generated catch block
             e1.printStackTrace();
         }
+    }
 
-
+    private void forwardGeocode() {
+        Geocoder fwdGeocoder = new Geocoder(this, Locale.getDefault());
+        String streetAddress = "Teglgårds Pl. 1, 9000 Aalborg";
+        List<Address> locations = null;
+        try {
+            locations = fwdGeocoder.getFromLocationName(streetAddress, 1);
+            cafeLongitude = locations.get(0).getLongitude();
+            cafeLatitude = locations.get(0).getLatitude();
+        } catch (IOException e1) {
+            // TODO Auto-generated catch block
+            e1.printStackTrace();
+        }
     }
 
     private void addMarker(double latitude, double lontitude, String title) {
 
         GoogleMap mMap;
-        mMap = ((MapFragment)getFragmentManager().findFragmentById(R.id.map)).getMap();
+        mMap = ((MapFragment) getFragmentManager().findFragmentById(R.id.map)).getMap();
         //TODO: getMap should be replaced by getMapAsync
         mMap.addMarker(new MarkerOptions()
                 .position(new LatLng(latitude, lontitude))
                 .title(title));
-
     }
-
 }
+
+
+
+
