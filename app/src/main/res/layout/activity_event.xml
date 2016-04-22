@@ -30,6 +30,7 @@
             android:id="@+id/edit_date"
             android:layout_width="150dp"
             android:layout_height="wrap_content"
+            android:inputType="datetime"
             />
     </LinearLayout>
 
@@ -47,13 +48,21 @@
                 android:id="@+id/edit_time"
                 android:layout_width="150dp"
                 android:layout_height="wrap_content"
+                android:inputType="datetime"
                 />
         </LinearLayout>
 
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:textSize="20sp"
+            android:text="What would you like to order:"
+            android:paddingTop="10dp"
+            />
         <Spinner
             android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:id="@+id/spinner_drinks"
+            android:layout_height="100dp"
+            android:id="@+id/spinner_menu"
             android:layout_gravity="center_horizontal"
             android:padding="20dp"/>
 
@@ -66,14 +75,12 @@
             android:onClick="invite_friend"
             android:background="#7969d95f"/>
 
-        <TextView
+        <EditText
             android:id="@+id/findcontact_view"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:text="(Friend name)"
             android:textSize="20sp"/>
-
-
 
         <Button
             android:layout_width="170dp"
@@ -81,10 +88,8 @@
             android:layout_marginTop="20dp"
             android:text="Save"
             android:layout_marginBottom="20dp"
-            android:onClick="save_event"
+            android:onClick="eventSave"
             android:background="#7969d95f"/>
-
-
 
     </LinearLayout>
 

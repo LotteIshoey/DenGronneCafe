@@ -9,19 +9,24 @@ public class DatabaseHelper extends SQLiteOpenHelper {
 
     public static final String DATABASE_NAME = "myDB";
     public static final int DATABASE_VERSION = 1;
+
+    //The menu table
     public final String TABLE_MENU = "Drinks";
-    public final String TABLE_EVENTS = "Events";
 
     public static final String PERSON_ID = "_id";
     public final String NAME = "name";
     public final String MENU_PICTURE = "image";
     public final String MENU_PRICE = "price";
 
+    //The event table
+    public final String TABLE_EVENTS = "Events";
+
     public static final String EVENT_ID = "_id";
     public final String EVENT_PERSON = "person";
     public final String EVENT_DRINK = "drink";
-    public final String EVENT_DATE = "date"; //TODO: need to be changed later on
+    public final String EVENT_DATE = "date";
     public final String EVENT_TIME = "time";
+    public final String EVENT_CHOSEN_FOOD = "Food";
 
 
     public DatabaseHelper(Context context) {
@@ -30,12 +35,12 @@ public class DatabaseHelper extends SQLiteOpenHelper {
 
     @Override
     public void onCreate(SQLiteDatabase db) {
-
+        //Creating the two tables
         String table_drink = "CREATE TABLE " + TABLE_MENU + " (" + PERSON_ID +
-                " INTEGER PRIMARY KEY AUTOINCREMENT, " + NAME + " TEXT, " + MENU_PICTURE + " INTEGER, " + MENU_PRICE + " INTEGER);";
+                " INTEGER PRIMARY KEY AUTOINCREMENT, " + NAME + " TEXT, " + MENU_PICTURE + " INTEGER, " + MENU_PRICE + " REAL);";
 
         String table_event = "CREATE TABLE " + TABLE_EVENTS + " (" + EVENT_ID +
-                " INTEGER PRIMARY KEY AUTOINCREMENT, " + EVENT_PERSON + " TEXT, " + EVENT_DRINK + " TEXT, " + EVENT_DATE + " TEXT, " + EVENT_TIME + " TEXT);";
+                " INTEGER PRIMARY KEY AUTOINCREMENT, " + EVENT_PERSON + " TEXT, " + EVENT_DRINK + " TEXT, " + EVENT_DATE + " TEXT, " + EVENT_TIME + " TEXT, " + EVENT_CHOSEN_FOOD + " TEXT);";
 
         db.execSQL(table_drink);
         db.execSQL(table_event);
@@ -53,7 +58,5 @@ public class DatabaseHelper extends SQLiteOpenHelper {
 
             // TODO: old version is NOT defined
         }
-
-
     }
 }

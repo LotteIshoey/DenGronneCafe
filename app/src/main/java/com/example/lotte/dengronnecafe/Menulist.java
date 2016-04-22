@@ -29,8 +29,6 @@ public class Menulist {
         menus.add(new Menulist("Coffee/Tea", "20 kr", " ", R.drawable.arrow_icon));
         menus.add(new Menulist("Special Coffee", "30 kr", "Cafe Latte, Latte Macchiato ect.", R.drawable.arrow_icon));
         return menus;
-
     }
-
 }
 
