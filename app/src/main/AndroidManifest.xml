@@ -42,7 +42,13 @@
 
         <activity android:name=".Map" />
         <activity android:name=".Topsongs" />
-        <activity android:name=".GeocodeLocation"></activity>
+        <activity android:name=".GeocodeLocation"> </activity>
+        
+        <service android:name=".SongService"
+            android:exported="false">
+        </service>
+        
+        
     </application>
 
 </manifest>

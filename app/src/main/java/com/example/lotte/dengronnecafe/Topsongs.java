@@ -1,11 +1,16 @@
 package com.example.lotte.dengronnecafe;
 
+import android.content.ComponentName;
+import android.content.Context;
+import android.content.Intent;
+import android.content.ServiceConnection;
 import android.hardware.Sensor;
 import android.hardware.SensorEvent;
 import android.hardware.SensorEventListener;
 import android.hardware.SensorManager;
 import android.media.MediaPlayer;
 import android.os.Bundle;
+import android.os.IBinder;
 import android.support.v7.app.AppCompatActivity;
 import android.util.Log;
 import android.view.OrientationEventListener;
@@ -29,8 +34,6 @@ public class Topsongs extends AppCompatActivity  implements SensorEventListener 
     float mLastY;
     float mLastZ;
     int songnumber = 0;
-    int song_array[];
-    String song_names[] = {"Song 1", "Song 2", "Song 3"};
 
     int SHAKE_THRESHOLD = 2000;
 
@@ -39,12 +42,18 @@ public class Topsongs extends AppCompatActivity  implements SensorEventListener 
     Sensor accelerometer;
     long lastUpdate;
 
+
+    //Service variables
+    SongService s;
+    Boolean isBound = false;
+
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_topsongs);
-        song_array = new int[] {R.raw.song1, R.raw.song2, R.raw.song3};
-        mp = MediaPlayer.create(this, song_array[songnumber]);
+        //song_array = new int[] {R.raw.song1, R.raw.song2, R.raw.song3}; IN SERVICE
+        //mp = MediaPlayer.create(this, song_array[songnumber]); IN SERVICE
 
        // After instantiating a connection with the Sensor Manager we need to select the sensor we want to monitor
         smanager = (SensorManager) getSystemService(SENSOR_SERVICE);
@@ -56,7 +65,7 @@ public class Topsongs extends AppCompatActivity  implements SensorEventListener 
             @Override
             public void onOrientationChanged(int arg0) {
                 orientationText = "Oritentationtext" + String.valueOf(arg0);
-                Log.d("Orientation", orientationText);
+                //Log.d("Orientation", orientationText);
 
                /* if (arg0 > 70 && arg0 < 100)
                 {
@@ -71,7 +80,7 @@ public class Topsongs extends AppCompatActivity  implements SensorEventListener 
 */
             }};
         if (myOrientationEventListener.canDetectOrientation()){
-            Log.d("Oritentation", "Can detect orientation");
+            //Log.d("Oritentation", "Can detect orientation");
             myOrientationEventListener.enable();
         }
 
@@ -86,12 +95,20 @@ public class Topsongs extends AppCompatActivity  implements SensorEventListener 
         super.onResume();
         // Register a SensorEventListener
         smanager.registerListener(this, accelerometer, SensorManager.SENSOR_DELAY_NORMAL);
+
+        //service
+        Intent intent = new Intent(this,SongService.class);
+        bindService(intent, songConnection, Context.BIND_AUTO_CREATE);
+
     }
 
     @Override
     protected void onPause() {
         super.onPause();
         smanager.unregisterListener(this);
+
+        //Service
+        unbindService(songConnection);
     }
 
     @Override
@@ -100,9 +117,9 @@ public class Topsongs extends AppCompatActivity  implements SensorEventListener 
         yAxis = event.values[1];
         zAxis = event.values[2];
 
-        Log.d("xAxis", String.valueOf(event.values[0]));
-        Log.d("yAxis", String.valueOf(event.values[1]));
-        Log.d("zAxis", String.valueOf(event.values[2]));
+       // Log.d("xAxis", String.valueOf(event.values[0]));
+        //Log.d("yAxis", String.valueOf(event.values[1]));
+        //Log.d("zAxis", String.valueOf(event.values[2]));
 
         long curTime = System.currentTimeMillis();
         // only allow one update every 100ms.
@@ -123,7 +140,7 @@ public class Topsongs extends AppCompatActivity  implements SensorEventListener 
                 {
                     mp.stop();
                 }
-                next_song();
+                s.next_song();
             }
             mLastX = x;
             mLastY = y;
@@ -135,89 +152,70 @@ public class Topsongs extends AppCompatActivity  implements SensorEventListener 
 
     }
 
-    public void stop_music(){
-        if (mp != null){
-            mp.stop();
-            mp.release();
-            mp = null;
-        }
+
+    public void start_song (View v) {
+        s.begin_player(songnumber);
+        show_song();
     }
 
-    public void next_song(){
-        songnumber++;
-        if (songnumber < 3){
-            play_song(songnumber);
-
-        }
-        else
-        {
-            songnumber = 0;
-            play_song(songnumber);
-        }
-    }
-
-    public void previous_song(){
-        songnumber--;
-        if (songnumber < 0) {
-            songnumber = 2;
-            play_song(songnumber);
-        }
-        else
-        {
-            play_song(songnumber);
-        }
-    }
-
-    public void play_song(int index){
-        stop_music();
-        mp = MediaPlayer.create(this,song_array[index]);
-        mp.start();
-        show_song(index);
-    }
-
-    public void start_song (View v){
-        if(mp.isPlaying())
-        {
-            mp.pause();
-        }
-        else
-        {
-            play_song(songnumber);
-        }
-        //TODO: if the music is pausen and then pressed again, it continues.
-        // TODO: if the music is stopped, it can start again when pressing start
-
-    }
-
+    //TODO: if the music is pausen and then pressed again, it continues.
     public void next_song (View v){
-        if(mp.isPlaying()) {
-            mp.stop();
-            next_song();
-        }
+        s.next_song();
+        show_song();
     }
 
     public void prev_song (View v){
-        if(mp.isPlaying()) {
-            mp.stop();
-            previous_song();
-        }
-
+        s.previous_song();
+        show_song();
     }
 
     public void stop_song (View v){
-        if(mp.isPlaying()) {
-            stop_music();
-        }
+            s.stop_music();
     }
 
-    public void show_song(int number){
-        if(mp.isPlaying()) {
-
-            String namesong = song_names[number];
-
+    public void show_song(){
+        String namesong = s.getSongName();
             TextView song = (TextView) findViewById(R.id.now_playing);
             song.setText(namesong);
+    }
 
+
+
+    //SERVICE METHODS
+    @Override
+    public void onStart(){
+        super.onStart();
+        explicitStart();
+    }
+
+    @Override
+    public void onStop(){
+        super.onStop();
+        expliciteStop();
+    }
+
+    private ServiceConnection songConnection = new ServiceConnection() {
+        @Override
+        public void onServiceConnected(ComponentName name, IBinder service) {
+            SongService.LocalBinder b = (SongService.LocalBinder) service;
+            s = b.getService();
+            isBound = true;
         }
+
+        @Override
+        public void onServiceDisconnected(ComponentName name) {
+            s = null;
+            isBound = false; //is it true?
+        }
+    };
+
+    private void explicitStart() {
+        //Explicitely start the song service
+        Intent intent = new Intent(Topsongs.this, SongService.class);
+        startService(intent);
+    }
+
+    private void expliciteStop() {
+        stopService(new Intent(Topsongs.this, SongService.class));
     }
 }
