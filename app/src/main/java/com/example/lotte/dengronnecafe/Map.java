@@ -1,6 +1,7 @@
 package com.example.lotte.dengronnecafe;
 
 import android.Manifest;
+import android.content.Intent;
 import android.content.pm.PackageManager;
 import android.location.Address;
 import android.location.Geocoder;
@@ -8,6 +9,7 @@ import android.location.Location;
 import android.os.Bundle;
 import android.support.v4.app.ActivityCompat;
 import android.support.v7.app.AppCompatActivity;
+import android.view.View;
 import android.widget.TextView;
 
 import com.google.android.gms.common.ConnectionResult;
@@ -61,6 +63,11 @@ public class Map extends AppCompatActivity implements
                 .addOnConnectionFailedListener(this)
                 .build();
 
+    }
+
+    public void click_find (View v){
+        Intent find_activity = new Intent(getApplicationContext(),GeocodeLocation.class);
+        startActivity(find_activity);
     }
 
 

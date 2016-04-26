@@ -13,8 +13,9 @@
 
     <LinearLayout
         android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        android:orientation="vertical">
+        android:layout_height="wrap_content"
+        android:orientation="vertical"
+        android:id="@+id/linearLayout1">
 
         <LinearLayout
         android:layout_width="wrap_content"
@@ -24,7 +25,7 @@
         <TextView
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="Date:"
+            android:text="@string/event_date"
             android:textSize="20sp"/>
         <EditText
             android:id="@+id/edit_date"
@@ -42,7 +43,7 @@
             <TextView
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="Time:"
+                android:text="@string/event_time"
                 android:textSize="20sp"/>
             <EditText
                 android:id="@+id/edit_time"
@@ -56,7 +57,7 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:textSize="20sp"
-            android:text="What would you like to order:"
+            android:text="@string/event_textorder"
             android:paddingTop="10dp"
             />
         <Spinner
@@ -65,32 +66,34 @@
             android:id="@+id/spinner_menu"
             android:layout_gravity="center_horizontal"
             android:padding="20dp"/>
+    </LinearLayout>
 
         <Button
-            android:layout_width="170dp"
-            android:layout_height="wrap_content"
-            android:layout_marginTop="20dp"
-            android:text="Invite a friend"
-            android:layout_marginBottom="20dp"
+            android:id="@+id/but_friend"
+            style="@style/Startbutton"
+            android:text="@string/event_but_friend"
             android:onClick="invite_friend"
-            android:background="#7969d95f"/>
+            android:layout_centerVertical="true"
+            android:layout_alignParentLeft="true"
+            android:layout_alignParentStart="true" />
 
         <EditText
             android:id="@+id/findcontact_view"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="(Friend name)"
-            android:textSize="20sp"/>
+            android:text="@string/event_friendname"
+            android:textSize="20sp"
+            android:layout_alignBottom="@+id/but_friend"
+            android:layout_alignRight="@+id/linearLayout1"
+            android:layout_alignEnd="@+id/linearLayout1" />
 
         <Button
-            android:layout_width="170dp"
-            android:layout_height="wrap_content"
-            android:layout_marginTop="20dp"
-            android:text="Save"
-            android:layout_marginBottom="20dp"
+            style="@style/Startbutton"
+            android:text="@string/event_save"
             android:onClick="eventSave"
-            android:background="#7969d95f"/>
+            android:layout_alignParentBottom="true"
+            android:layout_centerHorizontal="true" />
 
-    </LinearLayout>
+
 
 </RelativeLayout>

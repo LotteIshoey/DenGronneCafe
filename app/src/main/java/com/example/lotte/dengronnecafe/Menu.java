@@ -1,6 +1,5 @@
 package com.example.lotte.dengronnecafe;
 
-import android.content.ContentValues;
 import android.content.pm.ActivityInfo;
 import android.database.Cursor;
 import android.database.sqlite.SQLiteDatabase;
@@ -21,9 +20,6 @@ public class Menu extends AppCompatActivity {
         super.setRequestedOrientation(ActivityInfo.SCREEN_ORIENTATION_PORTRAIT);
 
         populateMenuListDB();
-
-
-
 
 
 
@@ -70,7 +66,7 @@ public class Menu extends AppCompatActivity {
         SQLiteDatabase db = myhelper.getWritableDatabase();
 
         if (hasPopulatedMenu < 1) {
-            insertdata();
+            //insertdata();
         }
             //Get all information from database table
             Cursor menuCursor = db.rawQuery("Select * FROM " + myhelper.TABLE_MENU, null);
@@ -85,7 +81,7 @@ public class Menu extends AppCompatActivity {
             menuListview.setAdapter(menuCursorAdapter);
         }
 
-    public void insertMenuDB (SQLiteDatabase db,  String name, double price, int imageRessource) {
+/*    public void insertMenuDB (SQLiteDatabase db,  String name, double price, int imageRessource) {
             DatabaseHelper myhelper = new DatabaseHelper(this);
             db = myhelper.getWritableDatabase();
 
@@ -94,7 +90,6 @@ public class Menu extends AppCompatActivity {
             menuValues.put(myhelper.MENU_PRICE, price);
             menuValues.put(myhelper.MENU_PICTURE, imageRessource);
             db.insert(myhelper.TABLE_MENU, null, menuValues);
-
     }
 
     public void insertdata(){
@@ -109,7 +104,7 @@ public class Menu extends AppCompatActivity {
     insertMenuDB(db, "Coffee/Tea", 20.00, R.drawable.arrow_icon);
     insertMenuDB(db, "Special Coffee", 30.00, R.drawable.arrow_icon);
         hasPopulatedMenu++;
-    }
+    }*/
 }
 
 

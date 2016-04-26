@@ -23,10 +23,6 @@ public class Start extends AppCompatActivity {
         startActivity(about_start);
      }
 
-    public void click_contact (View v){
-        Intent contact_start = new Intent(getApplicationContext(),Kontakt.class);
-        startActivity(contact_start);
-    }
 
     public void click_dessert (View v){
         Intent contact_dessert = new Intent(getApplicationContext(),Desserts.class);

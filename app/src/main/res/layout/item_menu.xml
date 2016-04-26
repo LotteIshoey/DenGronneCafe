@@ -10,8 +10,7 @@
         android:layout_height="30dp"
         android:id="@+id/menuPic"
         android:src="@drawable/arrow_icon"
-        android:layout_marginTop="20dp"
-        />
+        android:layout_marginTop="20dp" />
 
     <LinearLayout
         android:layout_width="match_parent"
@@ -26,7 +25,7 @@
             android:id="@+id/salatName"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="name"
+            android:text="@string/listview_name"
             android:textSize="25sp"
             android:textColor="#000000"
             android:textStyle="bold"
@@ -36,7 +35,7 @@
             android:id="@+id/undername"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text=" "
+            android:text="@string/listview_description"
             android:textSize="17sp"
             android:textColor="#000000"/>
 
@@ -47,7 +46,7 @@
         android:id="@+id/salatPrice"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:text="pris"
+        android:text="@string/listview_price"
         android:textSize="25sp"
         android:textColor="#000000"
         android:gravity="right"
@@ -55,6 +54,4 @@
         android:layout_alignParentTop="true"
         android:layout_alignParentLeft="true"
         android:layout_alignParentStart="true" />
-
-
 </RelativeLayout>

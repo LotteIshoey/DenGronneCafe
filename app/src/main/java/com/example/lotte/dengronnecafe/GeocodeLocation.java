@@ -11,6 +11,7 @@ import android.os.Bundle;
 import android.support.v4.app.ActivityCompat;
 import android.support.v7.app.AppCompatActivity;
 import android.util.Log;
+import android.view.View;
 import android.widget.TextView;
 
 import java.io.IOException;
@@ -27,6 +28,7 @@ public class GeocodeLocation extends AppCompatActivity {
     String currentStreet;
     String currentPost;
     String address;
+    String streetToView;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -35,6 +37,13 @@ public class GeocodeLocation extends AppCompatActivity {
 
         myAsyncTask = new MyAsyncTask();
         myAsyncTask.execute();
+    }
+
+
+
+
+    public void findlocation(View view) {
+        locationTxt.setText("You are here: " + streetToView);
     }
 
     public class MyAsyncTask extends AsyncTask<Location, Void, String> {
@@ -46,6 +55,7 @@ public class GeocodeLocation extends AppCompatActivity {
             return address;
         }
 
+
         @Override
         protected void onPreExecute() {
             locationTxt = (TextView) findViewById(R.id.geofind);
@@ -53,7 +63,7 @@ public class GeocodeLocation extends AppCompatActivity {
 
         @Override
         protected void onPostExecute(String StreetResult) {
-            locationTxt.setText("You are here: " + StreetResult);
+            streetToView = StreetResult;
         }
 
         private Location getLastLocation() {
@@ -66,7 +76,7 @@ public class GeocodeLocation extends AppCompatActivity {
                 LocationManager locationManagaer = (LocationManager)
                         GeocodeLocation.this.getSystemService(GeocodeLocation.this.LOCATION_SERVICE);
                 lastLocation = locationManagaer.getLastKnownLocation(locationManagaer.GPS_PROVIDER);
-                Log.e("location", "yes it works!");
+                Log.d("location", "yes it works!");
             }
             return lastLocation;
         }

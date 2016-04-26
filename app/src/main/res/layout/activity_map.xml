@@ -3,11 +3,17 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context="com.example.lotte.dengronnecafe.Map">
+    tools:context="com.example.lotte.dengronnecafe.Map"
+    android:paddingBottom="5dp"
+    android:paddingLeft="5dp"
+    android:paddingRight="5dp"
+    android:paddingTop="5dp"
+    >
 
 
 
     <LinearLayout
+        android:id="@+id/layoutmap"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         android:orientation="vertical">
@@ -20,13 +26,16 @@
             />
         <TextView
             android:layout_width="match_parent"
-            android:layout_height="100dp"
+            android:layout_height="50dp"
             android:id="@+id/locationtext"
-
             />
 
+        <Button
+            style="@style/Startbutton"
+            android:onClick="click_find"
+            android:text = "@string/find_location"
+            android:layout_gravity="center_horizontal" />
     </LinearLayout>
-
 
 
 </RelativeLayout>

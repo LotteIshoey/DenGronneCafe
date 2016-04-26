@@ -23,19 +23,19 @@ public class SongService extends Service {
         super.onCreate();
 
         song_array = new int[] {R.raw.song1, R.raw.song2, R.raw.song3};
-        mp = MediaPlayer.create(this, song_array[songnumber]);
     }
 
     @Override
     public void onDestroy(){
         super.onDestroy();
-        Toast.makeText(SongService.this, "The service is destoyed", Toast.LENGTH_SHORT);
+        Toast.makeText(SongService.this, "The service is destoyed", Toast.LENGTH_SHORT).show();
     }
 
     @Override
     public int onStartCommand(Intent intent, int flags, int startID){
-        Toast.makeText(SongService.this, "The service has been started", Toast.LENGTH_SHORT);
+        Toast.makeText(SongService.this, "The service has been started", Toast.LENGTH_SHORT).show();
         //return super.onStartCommand(intent, flags, startID);
+        mp = MediaPlayer.create(this, song_array[songnumber]);
         return START_STICKY;
     }
 
@@ -63,11 +63,11 @@ public class SongService extends Service {
     }
     if (!mp.isPlaying()) {
         play_song(songnumber);
-    } else {
-        mp.pause();
     }
-
-}
+    else {
+        mp.pause();
+        }
+    }
 
     public void stop_music(){
         if (mp != null){
@@ -109,6 +109,4 @@ public class SongService extends Service {
         Log.d("song", namesong);
         return namesong;
     }
-
-
 }

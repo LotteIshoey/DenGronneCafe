@@ -13,74 +13,45 @@
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:orientation="horizontal"
+        android:orientation="vertical"
         android:layout_centerHorizontal="true"
         android:layout_marginBottom="30dp"
         android:layout_marginTop="20dp"
-        android:id="@+id/linearLayout">
+        android:id="@+id/linearLayout"
+        android:layout_centerInParent="true">
 
         <Button
             style="@style/buttonStartBig"
             android:text="@string/start_menu"
-            android:onClick="click_menu"
-            android:layout_marginRight="25dp"/>
+            android:onClick="click_menu" />
+
+        <Button
+            style="@style/buttonStartBig"
+            android:text="@string/start_dessert"
+            android:onClick="click_dessert"
+            />
 
         <Button
             style="@style/buttonStartBig"
             android:text="@string/start_profile"
             android:onClick="click_profilemember"
             />
-    </LinearLayout>
-
-    <Button
-        style="@style/buttonStartBig"
-        android:text="Dessert"
-        android:onClick="click_dessert"
-        android:layout_marginTop="80dp"
-        />
-
-    <TextView
-        android:layout_marginTop="130dp"
-        android:id="@+id/startvelkommen1"
-        style="@style/textHeadline"
-        android:text="@string/start_text1"
-        />
-    <TextView
-        android:id="@+id/startvelkommen2"
-        style="@style/textHeadline"
-        android:text="@string/start_text2"
-        android:layout_below="@id/startvelkommen1"
-        android:textColor="#489342" />
-
-    <LinearLayout
-        android:id="@+id/botton_alignment1"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:orientation="horizontal"
-        android:layout_centerHorizontal="true"
-        android:layout_alignParentBottom="true">
 
         <Button
             android:id="@+id/start_about"
-            style="@style/Startbutton"
+            style="@style/buttonStartBig"
             android:text="@string/start_about"
             android:onClick="click_about"
-/>
+            />
         <Button
             android:id="@+id/start_map"
-            style="@style/Startbutton"
+            style="@style/buttonStartBig"
             android:text="@string/start_map"
             android:onClick="click_find"
             />
         <Button
-            android:id="@+id/start_contact"
-            style="@style/Startbutton"
-            android:text="@string/start_contact"
-            android:onClick="click_contact"
-            />
-        <Button
             android:id="@+id/start_test"
-            style="@style/Startbutton"
+            style="@style/buttonStartBig"
             android:text="@string/start_test"
             android:onClick="click_music"
             />

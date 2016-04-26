@@ -13,7 +13,7 @@ public class DatabaseHelper extends SQLiteOpenHelper {
     //The menu table
     public final String TABLE_MENU = "Drinks";
 
-    public static final String PERSON_ID = "_id";
+    public static final String DRINK_ID = "_id";
     public final String NAME = "name";
     public final String MENU_PICTURE = "image";
     public final String MENU_PRICE = "price";
@@ -36,8 +36,8 @@ public class DatabaseHelper extends SQLiteOpenHelper {
     @Override
     public void onCreate(SQLiteDatabase db) {
         //Creating the two tables
-        String table_drink = "CREATE TABLE " + TABLE_MENU + " (" + PERSON_ID +
-                " INTEGER PRIMARY KEY AUTOINCREMENT, " + NAME + " TEXT, " + MENU_PICTURE + " INTEGER, " + MENU_PRICE + " REAL);";
+        String table_drink = "CREATE TABLE " + TABLE_MENU + " (" + DRINK_ID +
+                " INTEGER PRIMARY KEY AUTOINCREMENT, " + NAME + " TEXT, " + MENU_PICTURE + " TEXT, " + MENU_PRICE + " REAL);";
 
         String table_event = "CREATE TABLE " + TABLE_EVENTS + " (" + EVENT_ID +
                 " INTEGER PRIMARY KEY AUTOINCREMENT, " + EVENT_PERSON + " TEXT, " + EVENT_DRINK + " TEXT, " + EVENT_DATE + " TEXT, " + EVENT_TIME + " TEXT, " + EVENT_CHOSEN_FOOD + " TEXT);";
@@ -45,7 +45,11 @@ public class DatabaseHelper extends SQLiteOpenHelper {
         db.execSQL(table_drink);
         db.execSQL(table_event);
 
+        db.execSQL("insert into " + TABLE_MENU + " values(null, 'Salatbar', 'R.drawable.fav_icon', '49.00');");
     }
+
+
+
 
     @Override
     public void onUpgrade(SQLiteDatabase db, int oldVersion, int DATABASE_VERSION) {
@@ -55,8 +59,6 @@ public class DatabaseHelper extends SQLiteOpenHelper {
 
             db.execSQL("DROP TABLE IF EXISTS " + TABLE_EVENTS);
             onCreate(db);
-
-            // TODO: old version is NOT defined
         }
     }
 }

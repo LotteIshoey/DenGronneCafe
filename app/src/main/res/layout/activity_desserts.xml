@@ -22,7 +22,7 @@
 
     <fragment
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"
+        android:layout_height="270dp"
         android:name="com.example.lotte.dengronnecafe.Fragment2"
         android:id="@+id/fragment2"
         android:layout_alignParentBottom="true"

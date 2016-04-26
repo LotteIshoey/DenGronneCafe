@@ -8,7 +8,6 @@ import android.hardware.Sensor;
 import android.hardware.SensorEvent;
 import android.hardware.SensorEventListener;
 import android.hardware.SensorManager;
-import android.media.MediaPlayer;
 import android.os.Bundle;
 import android.os.IBinder;
 import android.support.v7.app.AppCompatActivity;
@@ -19,8 +18,6 @@ import android.widget.TextView;
 import android.widget.Toast;
 
 public class Topsongs extends AppCompatActivity  implements SensorEventListener {
-
-    MediaPlayer mp;
 
     //variables for orientation sensor
     OrientationEventListener myOrientationEventListener;
@@ -35,7 +32,7 @@ public class Topsongs extends AppCompatActivity  implements SensorEventListener 
     float mLastZ;
     int songnumber = 0;
 
-    int SHAKE_THRESHOLD = 2000;
+    int SHAKE_THRESHOLD = 800;
 
     //initilising a sensor manager
     SensorManager smanager;
@@ -52,8 +49,6 @@ public class Topsongs extends AppCompatActivity  implements SensorEventListener 
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_topsongs);
-        //song_array = new int[] {R.raw.song1, R.raw.song2, R.raw.song3}; IN SERVICE
-        //mp = MediaPlayer.create(this, song_array[songnumber]); IN SERVICE
 
        // After instantiating a connection with the Sensor Manager we need to select the sensor we want to monitor
         smanager = (SensorManager) getSystemService(SENSOR_SERVICE);
@@ -65,20 +60,16 @@ public class Topsongs extends AppCompatActivity  implements SensorEventListener 
             @Override
             public void onOrientationChanged(int arg0) {
                 orientationText = "Oritentationtext" + String.valueOf(arg0);
-                //Log.d("Orientation", orientationText);
+                Log.d("Orientation", orientationText);
 
-               /* if (arg0 > 70 && arg0 < 100)
+               if (arg0 == -1) //the phone lies on the table
                 {
-                    mp1.start();
+                    s.begin_player(songnumber);
+                    show_song();
                 }
-                if (arg0 > 0 && arg0 < 69)
-                {
-                    if(mp1.isPlaying()) {
-                        mp1.pause();
-                   }
-                }
-*/
-            }};
+            }
+        };
+
         if (myOrientationEventListener.canDetectOrientation()){
             //Log.d("Oritentation", "Can detect orientation");
             myOrientationEventListener.enable();
@@ -132,15 +123,11 @@ public class Topsongs extends AppCompatActivity  implements SensorEventListener 
             float z = event.values[2];
 
             float speed = Math.abs(x+y+z - mLastX - mLastY - mLastZ) / diffTime * 10000;
-
+            //Log.d("sensor", "shake detected w/ speed: " + speed);
             if (speed > SHAKE_THRESHOLD) {
-                Log.d("sensor", "shake detected w/ speed: " + speed);
                 Toast.makeText(this, "shake detected w/ speed: " + speed, Toast.LENGTH_SHORT).show();
-                if(mp.isPlaying())
-                {
-                    mp.stop();
-                }
                 s.next_song();
+                show_song();
             }
             mLastX = x;
             mLastY = y;
@@ -158,7 +145,6 @@ public class Topsongs extends AppCompatActivity  implements SensorEventListener 
         show_song();
     }
 
-    //TODO: if the music is pausen and then pressed again, it continues.
     public void next_song (View v){
         s.next_song();
         show_song();
@@ -178,8 +164,6 @@ public class Topsongs extends AppCompatActivity  implements SensorEventListener 
             TextView song = (TextView) findViewById(R.id.now_playing);
             song.setText(namesong);
     }
-
-
 
     //SERVICE METHODS
     @Override
@@ -205,7 +189,7 @@ public class Topsongs extends AppCompatActivity  implements SensorEventListener 
         @Override
         public void onServiceDisconnected(ComponentName name) {
             s = null;
-            isBound = false; //is it true?
+            isBound = false;
         }
     };
 
