@@ -97,8 +97,8 @@ public class Event extends AppCompatActivity {
         if(menuCursor.getCount()>0){
             menuCursor.moveToFirst();
             while(menuCursor.moveToNext()){
-                String drinkName = menuCursor.getString(menuCursor.getColumnIndex(myhelper.NAME));
-                menu.add(drinkName);
+                String foodName = menuCursor.getString(menuCursor.getColumnIndex(myhelper.NAME));
+                menu.add(foodName);
             }
         }
         return menu;
@@ -106,7 +106,8 @@ public class Event extends AppCompatActivity {
 
     public void invite_friend(View view)
     {
-        Intent contactintent = new Intent (Intent.ACTION_PICK, ContactsContract.Contacts.CONTENT_URI);
+        Intent contactintent = new Intent (Intent.ACTION_PICK,
+                ContactsContract.Contacts.CONTENT_URI);
         startActivityForResult(contactintent, PICK_CONTACT);
     }
 
@@ -127,3 +128,6 @@ public class Event extends AppCompatActivity {
         }
     }
 }
+
+
+

@@ -62,7 +62,7 @@
             />
         <Spinner
             android:layout_width="match_parent"
-            android:layout_height="100dp"
+            android:layout_height="80dp"
             android:id="@+id/spinner_menu"
             android:layout_gravity="center_horizontal"
             android:padding="20dp"/>
@@ -93,7 +93,4 @@
             android:onClick="eventSave"
             android:layout_alignParentBottom="true"
             android:layout_centerHorizontal="true" />
-
-
-
 </RelativeLayout>

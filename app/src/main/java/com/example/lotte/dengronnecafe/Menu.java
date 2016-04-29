@@ -11,6 +11,7 @@ import android.widget.SimpleCursorAdapter;
 public class Menu extends AppCompatActivity {
 
     private static int hasPopulatedMenu = 0;
+    //TODO: a butten where you can either chose a costum adapter or a database with simple list adapter
 
 
     @Override

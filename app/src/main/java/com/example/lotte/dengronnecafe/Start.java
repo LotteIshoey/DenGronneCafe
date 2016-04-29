@@ -18,12 +18,6 @@ public class Start extends AppCompatActivity {
         startActivity(profile_start);
      }
 
-    public void click_about (View v){
-        Intent about_start = new Intent(getApplicationContext(),About.class);
-        startActivity(about_start);
-     }
-
-
     public void click_dessert (View v){
         Intent contact_dessert = new Intent(getApplicationContext(),Desserts.class);
         startActivity(contact_dessert);

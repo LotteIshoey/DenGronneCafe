@@ -1,51 +1,42 @@
 <resources>
     <string name="app_name">The Green Cafe</string>
 
-    <string name="start_text1">The</string>
-    <string name="start_text2">Green</string>
-    <string name="start_text3">Cafe</string>
-
-    <string name="start_contact">Kontakt</string>
-    <string name="start_map">Find</string>
-    <string name="start_about">Om</string>
+    <string name="start_map">Maps</string>
     <string name="start_test">Music</string>
     <string name="start_menu">Menu</string>
-    <string name="start_profile">Medlemskab</string>
-    <string name="start_dessert">Dessert</string>
-    <string name="headline_about">Om Os</string>
-    <string name="fill_about">Den grønne cafe sælger kun økolgiske varer og fokuserer på at give nordjyderne lokale råvarer. Dette øger kvaliteten af vores sortiment. Du kan nyde din frokost i cafeen eller tage det med hjem. I hverdagene har du også mulighed for at nyde maden til aften. Vi håber du få en fantastisk oplevelse i vores cafe. </string>
-    <string name="start_box1">Online bestilling</string>
-    <string name="headline_contact">Kontakt os</string>
-    <string name="address_contact">Teglværksgade 1, 9000 Aalborg</string>
-    <string name="mail_contact">E-mail: greencafe@cafe.com</string>
-    <string name="phone_contact">Tlf.nr. 26 00 26 00</string>
-    <string name="member_save">Gem Profil</string>
-    <string name="member_delete">Slet Profil</string>
-    <string name="member_takepicture">Tag Billede</string>
+    <string name="start_profile">Membership</string>
+    <string name="start_dessert">Desserts</string>
+
+    <string name="member_save">Save Profile</string>
+    <string name="member_delete">Delete Profile</string>
+    <string name="member_takepicture">Take Picture</string>
+
     <string name="listview_price">pris</string>
     <string name="listview_name">name</string>
     <string name="listview_description">description</string>
+
     <string name="mp_headline">Music Player</string>
     <string name="mp_description">Find your favorite song and mail it to us</string>
-    <string name="mp_play">Play/pause</string>
+    <string name="mp_play">Play/Pause</string>
     <string name="mp_prev">Previous</string>
-    <string name="mp_stop">Strop</string>
+    <string name="mp_stop">Stop</string>
     <string name="mp_next">Next</string>
     <string name="mp_playing">You are playing:</string>
     <string name="mp_songname">(PRESS PLAY)</string>
-    <string name="memb_name">Fornavn:</string>
-    <string name="memb_lastname">Efternavn:</string>
+
+    <string name="memb_name">Firstname:</string>
+    <string name="memb_lastname">Lastname:</string>
     <string name="memb_email">E-mail:</string>
-    <string name="start_event">Make An Event</string>
-    <string name="imag_profile">Profilepicture</string>
+    <string name="start_event">Book a table</string>
+    <string name="imag_profile">Profile Picture</string>
+
     <string name="location_text">(press the button)</string>
+
     <string name="event_save">Save</string>
     <string name="event_friendname">(Friend name)</string>
     <string name="event_but_friend">Invite a friend</string>
     <string name="event_textorder">What would you like to order:</string>
     <string name="event_time">Time:</string>
     <string name="event_date">Date:</string>
-    <string name="find_location">See Location</string>
-
-
+    <string name="find_location">Asynctask Location</string>
 </resources>

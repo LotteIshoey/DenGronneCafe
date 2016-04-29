@@ -74,14 +74,15 @@
         <Button
             style="@style/Startbutton"
             android:layout_marginTop="20dp"
-            android:layout_marginBottom="20dp"
+            android:layout_marginRight="30dp"
             android:text="@string/member_takepicture"
-            android:onClick="click_takephoto"/>
+            android:onClick="click_takephoto"
+            />
 
         <Button
             style="@style/Startbutton"
             android:layout_marginTop="20dp"
-            android:layout_marginBottom="20dp"
+            android:layout_marginBottom="10dp"
             android:text="@string/start_event"
             android:onClick="open_event"/>
 
@@ -98,6 +99,7 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:orientation="horizontal"
+            android:layout_marginTop="15dp"
             >
 
             <Button

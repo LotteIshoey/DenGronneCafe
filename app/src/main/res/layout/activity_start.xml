@@ -15,8 +15,6 @@
         android:layout_height="wrap_content"
         android:orientation="vertical"
         android:layout_centerHorizontal="true"
-        android:layout_marginBottom="30dp"
-        android:layout_marginTop="20dp"
         android:id="@+id/linearLayout"
         android:layout_centerInParent="true">
 
@@ -37,12 +35,7 @@
             android:onClick="click_profilemember"
             />
 
-        <Button
-            android:id="@+id/start_about"
-            style="@style/buttonStartBig"
-            android:text="@string/start_about"
-            android:onClick="click_about"
-            />
+
         <Button
             android:id="@+id/start_map"
             style="@style/buttonStartBig"

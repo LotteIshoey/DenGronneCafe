@@ -13,6 +13,8 @@ import android.widget.SimpleCursorAdapter;
  */
 public class MenuToDatabase extends AppCompatActivity {
 
+    //THIS IS NOT USED!
+
     private static int hasPopulatedMenu = 0;
 
     @Override
